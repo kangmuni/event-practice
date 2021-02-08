@@ -27,15 +27,19 @@
     <div></div>
     <div></div>
     <script>
-      document.addEventListener('wheel', event => {
-        console.log('scrolling');
-        event.preventDefault();
-      });
-      const checkbox = document.querySelector('input');
-      checkbox.addEventListener('click', event => {
-        // long
-        console.log('checked');
-        event.preventDefault();
+      document.addEventListener(
+        "wheel",
+        (event) => {
+          console.log("scrolling");
+          event.preventDefault(); // 스크롤링 처럼 빠르게 동작하는 이벤트는 브라우저가 나는 내 할일 먼저 할거고, 너가 preventDefault해도 무시할거야!
+        },
+        { passive: false } // 하지만 이렇게 기본적으로 passive가 true로 설정되있는 아이들은 false로 옵션 설정을 변경하는것은 좋지 않다.
+      );
+      const checkbox = document.querySelector("input");
+      checkbox.addEventListener("click", (event) => {
+        // long, 길게 무언가를 처리하고 나서
+        console.log("checked");
+        event.preventDefault(); // 브라우저에서 기본적으로 발생하는 동작을 취소한다.
       });
     </script>
   </body>
